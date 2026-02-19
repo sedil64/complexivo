@@ -1,0 +1,37 @@
+CREATE USER restaurantes_user WITH PASSWORD 'admin123';
+CREATE DATABASE restaurantes_db OWNER restaurantes_user;
+
+\c restaurantes_db
+
+ALTER SCHEMA public OWNER TO restaurantes_user;
+GRANT ALL ON SCHEMA public TO restaurantes_user;
+GRANT CREATE ON SCHEMA public TO restaurantes_user;
+
+ALTER DEFAULT PRIVILEGES FOR USER restaurantes_user IN SCHEMA public
+GRANT ALL ON TABLES TO restaurantes_user;
+
+ALTER DEFAULT PRIVILEGES FOR USER restaurantes_user IN SCHEMA public
+GRANT ALL ON SEQUENCES TO restaurantes_user;
+
+ALTER DEFAULT PRIVILEGES FOR USER restaurantes_user IN SCHEMA public
+GRANT ALL ON FUNCTIONS TO restaurantes_user;
+
+
+
+DEBUG=1
+SECRET_KEY=dev-secret-key
+DB_NAME=restaurantes_db
+DB_USER=restaurantes_user
+DB_PASSWORD=admin123
+DB_HOST=127.0.0.1
+DB_PORT=5432
+
+# Mongo sin Docker: servicio local
+MONGO_URI=mongodb://127.0.0.1:27017
+MONGO_DB=restaurantes_db
+
+CORS_ORIGIN=http://localhost:5173
+usuario
+admin
+contraseña
+admin
