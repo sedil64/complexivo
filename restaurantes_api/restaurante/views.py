@@ -19,12 +19,12 @@ class PedidoViewSet(viewsets.ModelViewSet):
     serializer_class = PedidoSerializer
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ["Mesa"]
-    search_fields = ["Mesa", "Mesa_name", "items_summary", "total", "status"]
+    filterset_fields = ["mesa"]
+    search_fields = ["mesa", "Mesa_name", "items_summary", "total", "status"]
     ordering_fields = ["id", "Mesa_name", "items_summary", "total", "status"]
 
     def get_permissions(self):
-        # Público: SOLO listar vehículos
+        # Público: SOLO listar Pedidos
         if self.action == "list":
             return [AllowAny()]
         return super().get_permissions()

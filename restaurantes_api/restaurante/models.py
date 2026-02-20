@@ -15,7 +15,7 @@ class Mesa(models.Model):
 
 class Estado(models.TextChoices):
     PENDIENTE = "pendiente", "Pendiente"
-    EN_PROCESO = "en_proceso", "En proceso"
+    EN_PROCESO = "en_proceso", "Enproceso"
     SERVIDO = "servido", "Servido"
     PAGADO = "pagado", "Pagado"
 
@@ -33,4 +33,4 @@ class Pedido(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.Mesa.name} {self.modelo} ({self.placa})"
+        return f"{self.Mesa.name} {self.items_summary} ({self.status})"
