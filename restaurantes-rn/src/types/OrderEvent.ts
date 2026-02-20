@@ -1,8 +1,8 @@
-export type VehicleService = {
+export type OrderEvent = {
     id: string;
-    vehiculo_id: number;       // Postgres
+    event_type: number;       // Postgres
     service_type_id: string;   // Mongo
     date?: string;             // backend asigna fecha al crear (NO se envía desde app)
-    notes?: string;
-    cost?: number;
+    note?: string;
+    source?: string;
   };

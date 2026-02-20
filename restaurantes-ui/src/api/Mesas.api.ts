@@ -7,7 +7,7 @@ export type Paginated<T> = {
   results: T[];
 };
 
-export type Mesa = { id: number; nombre: string };
+export type Mesa = { id: number; name: string };
 
 export async function listMesasApi() {
   const { data } = await http.get<Paginated<Mesa>>("/api/Mesas/");

@@ -1,7 +1,7 @@
-export type ServiceType = {
+export type MenuType = {
     id: string;
     name: string;
-    description?: string;
+    category?: string;
     base_price?: number;
     is_active?: boolean;
   };

@@ -109,7 +109,7 @@ export default function AdminPedidosPage() {
               >
                 {Mesas.map((m) => (
                   <MenuItem key={m.id} value={m.id}>
-                    {m.nombre} (#{m.id})
+                    {m.name} (#{m.id})
                   </MenuItem>
                 ))}
               </Select>

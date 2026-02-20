@@ -10,7 +10,7 @@ import { type Mesa, listMesasApi, createMesaApi, updateMesaApi, deleteMesaApi } 
 
 export default function AdminMesasPage() {
   const [items, setItems] = useState<Mesa[]>([]);
-  const [nombre, setNombre] = useState("");
+  const [name, setname] = useState("");
   const [editId, setEditId] = useState<number | null>(null);
   const [error, setError] = useState("");
 
@@ -29,12 +29,12 @@ export default function AdminMesasPage() {
   const save = async () => {
     try {
       setError("");
-      if (!nombre.trim()) return setError("Nombre requerido");
+      if (!name.trim()) return setError("name requerido");
 
-      if (editId) await updateMesaApi(editId, nombre.trim());
-      else await createMesaApi(nombre.trim());
+      if (editId) await updateMesaApi(editId, name.trim());
+      else await createMesaApi(name.trim());
 
-      setNombre("");
+      setname("");
       setEditId(null);
       await load();
     } catch {
@@ -44,7 +44,7 @@ export default function AdminMesasPage() {
 
   const startEdit = (m: Mesa) => {
     setEditId(m.id);
-    setNombre(m.nombre);
+    setname(m.name);
   };
 
   const remove = async (id: number) => {
@@ -65,9 +65,9 @@ export default function AdminMesasPage() {
         {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
         <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mb: 2 }}>
-          <TextField label="Nombre mesa" value={nombre} onChange={(e) => setNombre(e.target.value)} fullWidth />
+          <TextField label="name mesa" value={name} onChange={(e) => setname(e.target.value)} fullWidth />
           <Button variant="contained" onClick={save}>{editId ? "Actualizar" : "Crear"}</Button>
-          <Button variant="outlined" onClick={() => { setNombre(""); setEditId(null); }}>Limpiar</Button>
+          <Button variant="outlined" onClick={() => { setname(""); setEditId(null); }}>Limpiar</Button>
           <Button variant="outlined" onClick={load}>Refrescar</Button>
         </Stack>
 
@@ -75,7 +75,7 @@ export default function AdminMesasPage() {
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Nombre</TableCell>
+              <TableCell>name</TableCell>
               <TableCell align="right">Acciones</TableCell>
             </TableRow>
           </TableHead>
@@ -83,7 +83,7 @@ export default function AdminMesasPage() {
             {items.map((m) => (
               <TableRow key={m.id}>
                 <TableCell>{m.id}</TableCell>
-                <TableCell>{m.nombre}</TableCell>
+                <TableCell>{m.name}</TableCell>
                 <TableCell align="right">
                   <IconButton onClick={() => startEdit(m)}><EditIcon /></IconButton>
                   <IconButton onClick={() => remove(m.id)}><DeleteIcon /></IconButton>
